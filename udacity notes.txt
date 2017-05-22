@@ -1,0 +1,2876 @@
+# Define a procedure, median, that takes three
+# numbers as its inputs, and returns the median
+# of the three numbers.
+
+# Make sure your procedure has a return statement.
+
+def	bigger(a,b):
+    if a > b:
+		return a
+    else:
+        return b
+
+# def smaller(a,b):
+	# if a > b:
+		# return b
+	# else:
+		# return a
+		
+def biggest(a,b,c):
+    return bigger(a,bigger(b,c))
+	
+# def median(a,b,c):
+	# return bigger(smaller(b,c),smaller(a,bigger(b,c)))
+
+def median(a,b,c):
+	big = biggest(a,b,c)
+	if big == a:
+		return bigger(b,c)
+	if big == b:
+		return bigger(a,c)
+	else:
+		return bigger(a,b)
+	
+	
+	
+	
+	
+
+def countdown(a):
+	i = a
+	while i <= a:
+		print i
+		i = i - 1
+		if i == 0:
+			print 'Blastoff!'
+			break
+		
+			
+			
+countdown(3)
+
+
+
+print(median(1,2,3))
+#>>> 2
+
+print(median(9,3,6))
+#>>> 6
+
+print(median(7,8,7))
+#>>> 7
+
+
+
+
+
+def find_last(s,t):
+	last_pos = -1
+	while True:
+		pos = s.find(t, last_pos + 1)
+		if pos == -1:
+			return last_pos
+		last_pos = pos
+		
+	
+
+
+print find_last('you fucking cutn ill fuck and fucking kill fuck you', 'fuck')
+
+def	weekend(day):
+ if day == ("Saturday") or day == ("Sunday"):
+  return True
+ else:
+  return False
+
+
+print weekend('Monday')
+#>>> False
+
+print weekend('Saturday')
+#>>> True
+
+print weekend('July')
+#>>> False
+
+
+# Define a procedure, stamps, which takes as its input a positive integer in
+# pence and returns the number of 5p, 2p and 1p stamps (p is pence) required 
+# to make up that value. The return value should be a tuple of three numbers 
+# (that is, your return statement should be followed by the number of 5p,
+# the number of 2p, and the nuber of 1p stamps).
+#
+# Your answer should use as few total stamps as possible by first using as 
+# many 5p stamps as possible, then 2 pence stamps and finally 1p stamps as 
+# needed to make up the total.
+#
+# (No fair for USians to just say use a "Forever" stamp and be done with it!)
+#
+
+def stamps(a):
+    while True: #29
+	five_p = (a / 5) #5
+	remainder = a - (five_p * 5) #4
+	two_p = remainder / 2 #2
+	one_p = remainder - (two_p * 2)
+	return five_p, two_p, one_p
+
+
+print stamps(8)
+#>>> (1, 1, 1)  # one 5p stamp, one 2p stamp and one 1p stamp
+print stamps(5)
+#>>> (1, 0, 0)  # one 5p stamp, no 2p stamps and no 1p stamps
+print stamps(29)
+#>>> (5, 2, 0)  # five 5p stamps, two 2p stamps and no 1p stamps
+print stamps(0)
+#>>> (0, 0, 0) # no 5p stamps, no 2p stamps and no 1p stamps
+
+
+
+
+# The range of a set of values is the maximum value minus the minimum
+# value. Define a procedure, set_range, which returns the range of three input
+# values.
+
+# Hint: the procedure, biggest which you coded in this unit
+# might help you with this question. You might also like to find a way to
+# code it using some built-in functions.
+
+def	bigger(a,b):
+    if a > b:
+	 return a
+    else:
+     return b
+
+
+def biggest(a,b,c):
+    return bigger(a,bigger(b,c))
+
+def smaller(a,b):
+	if a > b:
+	 return b
+	else:
+	 return a
+	
+def smallest(a,b,c):
+	big = biggest(a,b,c)
+	if big == a:
+	 return smaller(b,c)
+	if big == b:
+	 return smaller(a,c)
+	else:
+	 return smaller(a,b)
+	
+def set_range(a, b, c):
+    return biggest(a, b, c) - smallest(a, b, c)
+
+
+print set_range(10, 4, 7)
+#>>> 6  # since 10 - 4 = 6
+
+print set_range(1.1, 7.4, 18.7)
+#>>> 17.6 # since 18.7 - 1.1 = 17.6
+
+
+
+
+
+def fix_machine(debris, product):
+ a = 0
+ while a < len(product):
+  if debris.find(product[a]) == -1:
+   return "Give me something that's not useless next time."
+  else: 
+   a = a + 1
+ return product
+
+### TEST CASES ###
+#print "Test case 1: ", fix_machine('UdaciousUdacitee', 'Udacity') == "Give me something that's not useless next time."
+#print "Test case 2: ", fix_machine('buy me dat Unicorn', 'Udacity') == 'Udacity'
+#print "Test case 3: ", fix_machine('AEIOU and sometimes y... c', 'Udacity') == 'Udacity'
+#print "Test case 4: ", fix_machine('wsx0-=mttrhix', 't-shirt') == 't-shirt'
+
+### TEST CASES ###
+print "Test case 1: ", fix_machine('UdaciousUdacitee', 'Udacity')
+print "Test case 2: ", fix_machine('buy me dat Unicorn', 'Udacity')
+print "Test case 3: ", fix_machine('AEIOU and sometimes y... c', 'Udacity')
+print "Test case 4: ", fix_machine('wsx0-=mttrhix', 't-shirt')
+
+
+
+
+def testLeapYear(a):  #code that tests if a year is a leap year
+	if a % 4 != 0:
+		return False
+	elif a % 100 != 0:
+		return True
+	elif a % 400 != 0:
+		return False
+	else:
+		return True
+		
+		
+
+def bridgeYearDays(birthYear,currentYear): #finds the number of days in the years between our birth year and current year
+	bridgeDays = 0						   #i.e birth year 1990, current year 2001, it finds number of days in 1991,1992,...,2000
+	while currentYear-1> birthYear:
+		if testLeapYear(currentYear-1) == True:
+			bridgeDays = bridgeDays + 366
+		else:
+			bridgeDays = bridgeDays + 365
+		currentYear = currentYear - 1
+	return bridgeDays
+
+
+def startDays(year, month, day):  #this function is to find the number of days from the start of the year to the given date
+	currentDays = day             #i.e given date 1995 January 10, returns 10
+	while month > 0:
+		if month - 1 == 11:
+			currentDays = currentDays + 30
+			month = month - 1
+		if month - 1 == 10:
+			currentDays = currentDays + 31
+			month = month - 1
+		if month - 1 == 9:
+			currentDays = currentDays + 30
+			month = month - 1
+		if month - 1 == 8:
+			currentDays = currentDays + 31
+			month = month - 1
+		if month - 1 == 7:
+			currentDays = currentDays + 31
+			month = month - 1
+		if month - 1 == 6:
+			currentDays = currentDays + 30
+			month = month - 1
+		if month - 1 == 5:
+			currentDays = currentDays + 31
+			month = month - 1
+		if month - 1 == 4:
+			currentDays = currentDays + 30
+			month = month - 1
+		if month - 1 == 3:
+			currentDays = currentDays + 31
+			month = month - 1
+		if month - 1 == 2:
+			if testLeapYear(year) == True:
+				currentDays = currentDays + 29#leap year
+			else:
+				currentDays = currentDays + 28#non leap year
+			month = month - 1
+		if month - 1 == 1:
+			currentDays = currentDays + 31
+			month = month - 1
+		else:
+			return currentDays
+			
+			
+			
+def birthDays(year, month, day):          #this function finds the number of days from the birth date til the end of the birth year
+	endDays = 0                           #i.e birthdate of December 31 2012 would output 0 days               
+	if testLeapYear(year) == True:        #uses the code from startDays and 'inverts it'
+		endDays = 366 - startDays(year, month, day)
+	else:
+		endDays = 365 - startDays(year, month, day)
+	return endDays
+	
+def daysBetweenDates(year1, month1, day1, year2, month2, day2):         #outputs the answer we want
+	total = 0                                                           #this test accounts for the case where birth year = current year
+	if year1 == year2:                                                  
+		total = total + bridgeYearDays(year1,year2) + birthDays(year1,month1,day1) - birthDays(year2,month2,day2)   
+	else:
+		total = total + startDays(year2,month2,day2) + bridgeYearDays(year1,year2) + birthDays(year1,month1,day1)
+	return total
+
+
+
+def test():
+    test_cases = [((2012,1,1,2012,2,28), 58), 
+                  ((2012,1,1,2012,3,1), 60),
+                  ((2011,6,30,2012,6,30), 366),
+                  ((2011,1,1,2012,8,8), 585 ),
+                  ((1900,1,1,1999,12,31), 36523)]
+    for (args, answer) in test_cases:
+        result = daysBetweenDates(*args)
+        if result != answer:
+            print "Test with data:", args, "failed"
+        else:
+            print "Test case passed!"
+
+test()
+
+
+
+
+
+
+
+def print_abacus(value):
+	i, a = 0, 0 #initializing values
+	converted = str(value) #converted is used to convert an integer (i.e 12345) to a 10 character string (i.e 0000012345)
+	while i < 10-len(converted):
+		converted = "0" + converted
+	while a < 10:
+		print "|" + "00000*****"[:10-int(converted[a])] + "   " + "00000*****"[10-int(converted[a]):] + "|" #prints out the abacus
+		a = a + 1
+		
+print_abacus(1234)
+
+
+
+
+
+
+
+
+# By AnnaGajdova from forums
+# You are in the middle of a jungle. 
+# Suddenly you see an animal coming to you. 
+# Here is what you should do if the animal is:
+
+# zebra >> "Try to ride a zebra!"
+# cheetah >> If you are faster than a cheetah: "Run!" 
+#            If you are not: "Stay calm and wait!". 
+#            The speed of a cheetah is 115 km/h.
+# anything else >> "Introduce yourself!"
+
+# Define a procedure, jungle_animal, 
+# that takes as input a string and a number, 
+# an animal and your speed (in km/h), 
+# and prints out what to do.
+
+def	jungle_animal(animal, my_speed):
+	if animal == "zebra":
+		print "Try to ride a zebra!"
+	else:
+		if animal == "cheetah":
+			if my_speed > 115:
+				print "Run!"
+			else:
+				print "Stay calm and wait!"
+		else:
+			print "Introduce yourself"
+	
+
+
+
+jungle_animal('cheetah', 130)
+#>>> "Stay calm and wait!"
+
+jungle_animal('gorilla', 21)
+#>>> "Introduce yourself!"
+
+
+
+# Define a procedure, replace_spy,
+# that takes as its input a list of
+# three numbers, and modifies the
+# value of the third element in the
+# input list to be one more than its
+# previous value.
+
+spy = [0,0,7]
+
+# In the test below, the first line calls your 
+# procedure which will change spy, and the 
+# second checks you have changed it.
+# Uncomment the top two lines below.
+
+def replace_spy(a):
+	spy[2] = spy[2] +1
+	return spy
+
+
+replace_spy(spy)
+print spy
+#>>> [0,0,8]
+
+
+
+
+
+
+# Define a procedure, measure_udacity,
+# that takes as its input a list of strings,
+# and returns a number that is a count
+# of the number of elements in the input
+# list that start with the uppercase 
+# letter 'U'.
+
+def measure_udacity(a):
+	total = 0
+	for e in a:
+		if e[0] == 'U':
+			total = total + 1
+	return total
+
+
+
+print measure_udacity(['Dave','Sebastian','Katy'])
+#>>> 0
+
+print measure_udacity(['Umika','Umberto'])
+#>>> 2
+
+
+
+
+
+# Define a procedure, find_element,
+# that takes as its inputs a list
+# and a value of any type, and
+# returns the index of the first
+# element in the input list that
+# matches the value.
+
+# If there is no matching element,
+# return -1.
+
+# Define a procedure, find_element,
+# that takes as its inputs a list
+# and a value of any type, and
+# returns the index of the first
+# element in the input list that
+# matches the value.
+
+# If there is no matching element,
+# return -1.
+
+def find_element(a,b):
+	i = 0
+	for e in a:
+		if e == b:
+			return i
+		i = i + 1
+	return -1
+
+
+
+
+
+print find_element([1,2,3],3)
+#>>> 2
+
+print find_element(['alpha','beta'],'gamma')
+#>>> -1
+
+
+# Define a procedure, find_element,
+# using index that takes as its
+# inputs a list and a value of any
+# type, and returns the index of
+# the first element in the input
+# list that matches the value.
+
+# If there is no matching element,
+# return -1.
+
+def find_element(list, target):
+	if target in list:
+		return list.index(target)
+	else:
+		return -1
+
+
+
+
+print find_element([1,2,3],3)
+#>>> 2
+
+print find_element(['alpha','beta'],'gamma')
+#>>> -1
+
+
+
+# Define a procedure, union,
+# that takes as inputs two lists.
+# It should modify the first input
+# list to be the set union of the two
+# lists. You may assume the first list
+# is a set, that is, it contains no 
+# repeated elements.
+
+
+def union(p,q):
+	for e in q:
+		if e not in p:
+			p.append(e)
+	return p
+
+
+
+# To test, uncomment all lines 
+# below except those beginning with >>>.
+
+a = [1,2,3]
+b = [2,4,6]
+union(a,b)
+print a 
+#>>> [1,2,3,4,6]
+#print b
+#>>> [2,4,6]
+
+
+#get all links
+
+
+#get all links
+
+
+import httplib2
+
+
+def get_page(link):
+	http = httplib2.Http()
+	status, response = http.request(link)  
+	return response
+
+def get_next_target(page):
+	start_link = page.find('<a href=')
+	if start_link == -1:
+		return None, 0
+	start_quote = page.find('"', start_link)
+	end_quote = page.find('"', start_quote + 1)
+	url = page[start_quote + 1:end_quote]
+	return url, end_quote
+	
+def get_all_links(page):	
+	links = []
+	while True:
+		url, endpos = get_next_target(page)
+		if url:
+			links.append(url)
+			page = page[endpos:]
+		else:
+			return links
+			
+print get_all_links(get_page('http://www.udacity.com/cs101x/index.html'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#get all links
+import httplib2
+
+def get_page(link):
+	http = httplib2.Http()
+	status, response = http.request(link)  
+	return response
+
+def get_next_target(page):
+	start_link = page.find('<a href=')
+	if start_link == -1:
+		return None, 0
+	start_quote = page.find('"', start_link)
+	end_quote = page.find('"', start_quote + 1)
+	url = page[start_quote + 1:end_quote]
+	return url, end_quote
+	
+def get_all_links(page):	
+	links = []
+	while True:
+		url, endpos = get_next_target(page)
+		if url:
+			links.append(url)
+			page = page[endpos:]
+		else:
+			return links		
+			
+def crawl(link):
+	return get_all_links(get_page(link))
+
+def tester(a,string):
+	for e in string:
+		if e == a:
+			return True
+	return False
+
+def one_by_one(s, q): 	#s = to_crawl q = latest crawl, function adds elements one by one
+	i = 0 				#storage
+	while q != []:
+		i = q.pop()
+		s.append(i)
+	return s
+	
+def web_crawl(seed):
+	to_crawl = []
+	crawled = []
+	to_crawl.append(seed)
+	# print to_crawl
+	while to_crawl != []:
+		# print "started while loop"
+		if tester(to_crawl[len(to_crawl) - 1], crawled):   #this part is to test if the link has already been crawled
+			# print "started if loop"
+			to_crawl.pop() #if the link has already been crawled, the link is removed ('pop') from to_crawl and forgotten about
+		else:
+			# print "started else loop"				#this loop is for processing links in to_crawl
+			store = to_crawl.pop() #takes the link we are about to crawl, removes it from to_crawl and stores it in var store
+			# print "store: "
+			# print store
+			to_crawl = one_by_one(to_crawl, crawl(store)) #here the link is crawled (crawl(store)), and then the results of the crawl sent to one_by_one
+			# print "to_crawl: "                          #which adds the results of the crawl to to_crawl as a part of the array (i.e not as a nested array)
+			# print to_crawl
+			crawled.append(store) #adds the link we just crawled to crawled
+			# print "crawled " 
+			# print crawled
+			if len(crawled) > 15:  #this is just so i can try to see results, usually works when set at 10
+				return crawled
+	return crawled
+	
+def printer(input):
+	while input != []:
+		print input.pop()
+		
+printer(web_crawl('http://nickkyrgios.org/'))
+
+
+
+
+
+
+# THREE GOLD STARS
+
+# Sudoku [http://en.wikipedia.org/wiki/Sudoku]
+# is a logic puzzle where a game
+# is defined by a partially filled
+# 9 x 9 square of digits where each square
+# contains one of the digits 1,2,3,4,5,6,7,8,9.
+# For this question we will generalize
+# and simplify the game.
+
+# Define a procedure, check_sudoku,
+# that takes as input a square list
+# of lists representing an n x n
+# sudoku puzzle solution and returns the boolean
+# True if the input is a valid
+# sudoku square and returns the boolean False
+# otherwise.
+
+# A valid sudoku square satisfies these
+# two properties:
+
+#   1. Each column of the square contains
+#       each of the whole numbers from 1 to n exactly once.
+
+#   2. Each row of the square contains each
+#       of the whole numbers from 1 to n exactly once.
+
+# You may assume the the input is square and contains at
+# least one row and column.
+
+correct = [[1,2,3],
+           [2,3,1],
+           [3,1,2]]
+
+incorrect = [[1,2,3,4],
+             [2,3,1,3],
+             [3,1,2,3],
+             [4,4,4,4]]
+
+incorrect2 = [[1,2,3,4],
+             [2,3,1,4],
+             [4,1,2,3],
+             [3,4,1,2]]
+
+incorrect3 = [[1,2,3,4,5],
+              [2,3,1,5,6],
+              [4,5,2,1,3],
+              [3,4,5,2,1],
+              [5,6,4,3,2]]
+
+incorrect4 = [['a','b','c'],
+              ['b','c','a'],
+              ['c','a','b']]
+
+incorrect5 = [ [1, 1.5],
+               [1.5, 1]]
+               
+			   
+def ideal(length):
+    ideal_row = []
+    i = 1
+    while i <= length:
+        ideal_row.append(i)
+        i = i + 1
+    return ideal_row
+
+def check_sudoku(input):
+    length = len(input[0]) # length of a standard row/column
+    ideal_row = ideal(length)
+    #row by row loop starts here
+    for e in input:
+        if sorted(e) != ideal_row:
+            return False
+    #column checking begins here
+    i = 0 #horizontal counter
+    j = 0 #vertical counter
+    store = []
+    while i < length:
+        while j < length:
+            store.append(input[j][i])
+            j = j + 1
+            #print store
+        #print "sorted(store) = ", sorted(store)
+        #print "ideal_row = ", ideal_row
+        if sorted(store) != ideal_row:
+            return False  
+        #print "store = ", store
+        store = []
+        j = 0
+        i = i + 1        
+    return True
+
+
+
+
+
+    
+    
+print check_sudoku(incorrect)
+#>>> False
+
+print check_sudoku(correct)
+#>>> True
+
+print check_sudoku(incorrect2)
+#>>> False
+
+print check_sudoku(incorrect3)
+#>>> False
+
+print check_sudoku(incorrect4)
+#>>> False
+
+print check_sudoku(incorrect5)
+#>>> False
+
+
+
+
+
+# A list is symmetric if the first row is the same as the first column,
+# the second row is the same as the second column and so on. Write a
+# procedure, symmetric, which takes a list as input, and returns the
+# boolean True if the list is symmetric and False if it is not.
+def symmetric(input):
+    i = 0 #horizontal counter
+    j = 0 #vertical counter
+    store = []
+    while i < len(input):
+        while j < len(input):
+            store.append(input[j][i])
+            j = j + 1
+        if store != input[i]:
+            return False  
+        store = []
+        j = 0
+        i = i + 1        
+    return True
+
+
+    # Your code here
+
+print symmetric([[1, 2, 3],
+                [2, 3, 4],
+                [3, 4, 1]])
+#>>> True
+
+print symmetric([["cat", "dog", "fish"],
+                ["dog", "dog", "fish"],
+                ["fish", "fish", "cat"]])
+#>>> True
+
+#print symmetric([["cat", "dog", "fish"],
+#                ["dog", "dog", "dog"],
+#                ["fish","fish","cat"]])
+#>>> False
+
+#print symmetric([[1, 2],
+#                [2, 1]])
+#>>> True
+
+print symmetric([[1, 2, 3, 4],
+                [2, 3, 4, 5],
+                [3, 4, 5, 6]])
+#>>> False
+
+#print symmetric([[1,2,3],
+#                 [2,3,1]])
+#>>> False
+
+
+
+
+def inverter(a):
+    return a - (2 * a)
+
+def antisymmetric(input):
+    i = 0 #horizontal counter
+    j = 0 #vertical counter
+    store = []
+    while i < len(input):
+        while j < len(input):
+            store.append(inverter(input[j][i]))
+            j = j + 1
+        if store != input[i]:
+            return False  
+        store = []
+        j = 0
+        i = i + 1        
+    return True
+
+
+# Test Cases:
+
+print antisymmetric([[0, 1, 2], 
+                     [-1, 0, 3], 
+                     [-2, -3, 0]])   
+#>>> True
+
+print antisymmetric([[0, 0, 0],
+                     [0, 0, 0],
+                     [0, 0, 0]])
+#>>> True
+
+print antisymmetric([[0, 1, 2], 
+                     [-1, 0, -2], 
+                     [2, 2,  3]])
+#>>> False
+
+print antisymmetric([[1, 2, 5],
+                     [0, 1, -9],
+                     [0, 0, 1]])
+#>>> False
+
+
+
+
+
+
+
+
+
+
+
+# By Ashwath from forums
+# Given a list of lists representing a n * n matrix as input, 
+# define a  procedure that returns True if the input is an identity matrix 
+# and False otherwise.
+
+# An IDENTITY matrix is a square matrix in which all the elements 
+# on the principal/main diagonal are 1 and all the elements outside 
+# the principal diagonal are 0. 
+# (A square matrix is a matrix in which the number of rows 
+# is equal to the number of columns)
+def one_test(input):
+    i = 0
+    while i < len(input):
+        if input[i][i] != 1:
+            return False
+        i = i + 1
+    return True
+    
+def square_test(input): #test to see if it's an actual square matrix
+    if len(input) != len(input[0]):
+        return True
+    
+def zero_test(input):
+    i = 0
+    j = 0
+    while i < len(input):
+        while j < len(input):
+            if j != i:
+                if input[i][j] != 0:
+                    return False
+            j = j + 1
+        j = 0
+        i = i + 1
+    return True
+
+
+def is_identity_matrix(matrix):
+    if square_test(matrix):
+        return False
+    if one_test(matrix):
+        if zero_test(matrix):
+    
+            return True
+    return False
+
+
+ # test for ones, and then test for zeroes
+    
+
+# Test Cases:
+
+matrix1 = [[1,0,0,0],
+           [0,1,0,0],
+           [0,0,1,0],
+           [0,0,0,1]]
+print is_identity_matrix(matrix1), 1, "True"
+#>>>True
+
+matrix2 = [[1,0,0],
+           [0,1,0],
+           [0,0,0]]
+
+print is_identity_matrix(matrix2), 2, "False"
+#>>>False
+
+matrix3 = [[2,0,0],
+           [0,2,0],
+           [0,0,2]]
+
+print is_identity_matrix(matrix3), 3, "False"
+#>>>False
+
+matrix4 = [[1,0,0,0],
+           [0,1,1,0],
+           [0,0,0,1]]
+
+print is_identity_matrix(matrix4), 4, "False"
+#>>>False
+
+matrix5 = [[1,0,0,0,0,0,0,0,0]]
+
+print is_identity_matrix(matrix5), 5, "False"
+#>>>False
+
+matrix6 = [[1,0,0,0],  
+           [0,1,0,1],  
+           [0,0,1,0],  
+           [0,0,0,1]]
+
+print is_identity_matrix(matrix6), 6, "False"
+#>>>False
+
+matrix7 = [[1, -1, 1],
+           [0, 1, 0],
+           [0, 0, 1]]
+print is_identity_matrix(matrix7), 7, "False"
+#>>>False    
+
+
+
+
+# Numbers in lists by SeanMc from forums
+# define a procedure that takes in a string of numbers from 1-9 and
+# outputs a list with the following parameters:
+# Every number in the string should be inserted into the list.
+# If a number x in the string is less than or equal 
+# to the preceding number y, the number x should be inserted 
+# into a sublist. Continue adding the following numbers to the 
+# sublist until reaching a number z that
+# is greater than the number y. 
+# Then add this number z to the normal list and continue.
+
+#Hint - "int()" turns a string's element into a number
+
+
+def numbers_in_lists(string):
+    max = 0
+    i = 0
+    list = []
+    store = []
+    while i < len(string):
+        if int(string[i]) > max:
+            max = int(string[i])
+            list.append(int(string[i]))
+            i = i + 1
+        else:
+            while i < len(string) and int(string[i]) <= max:
+                store.append(int(string[i]))
+                i = i + 1
+            list.append(store)
+            store = []
+    return list
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # Crypto Analysis: Frequency Analysis
+#
+# To analyze encrypted messages, to find out information about the possible 
+# algorithm or even language of the clear text message, one could perform 
+# frequency analysis. This process could be described as simply counting 
+# the number of times a certain symbol occurs in the given text. 
+# For example:
+# For the text "test" the frequency of 'e' is 1, 's' is 1 and 't' is 2.
+#
+# The input to the function will be an encrypted body of text that only contains 
+# the lowercase letters a-z. 
+# As output you should return a list of the normalized frequency 
+# for each of the letters a-z. 
+# The normalized frequency is simply the number of occurrences, i, 
+# divided by the total number of characters in the message, n.
+
+
+def listBuild(input): # [array number, character, unicode, frequency, ratio]
+    list = []
+    temp = []
+    for e in input:
+        temp.append(ord(e) - 97)
+        temp.append(e)
+        temp.append(ord(e))
+        temp.append(0)
+        temp.append(0)
+        list.append(temp)
+        temp = []
+    return list # 26 col by 5 row list that will store our data
+
+def listCount(string, list): # counts frequency of numbers and adds them to the list we just built
+    for e in string:
+        list[(ord(e) - 97)][3] = list[(ord(e) - 97)][3] + 1
+    return list
+    
+def ratio(ratio_list, message): # calculates frequency as a ratio and adds to the list
+    i = 0
+    while i < len(ratio_list):
+        if ratio_list[i][3] > 0:
+            ratio_list[i][4] = (ratio_list[i][3] + 0.0)/len(message) # frequency / length of input string
+        i = i + 1
+    return ratio_list
+    
+def freqList(freq_list): #this function just takes the last column of our list and builds it into its own list
+    final_list = []
+    i = 0
+    while i < len(freq_list):
+        final_list.append(freq_list[i][4])
+        i = i + 1
+    return final_list
+    
+def freq_analysis(message):
+    list = listBuild('abcdefghijklmnopqrstuvwxyz')
+    counted_list = listCount(message, list)
+    ratio_list = ratio(counted_list, message)
+    final_list = freqList(ratio_list)
+    return final_list
+
+print freq_analysis('bewarethebunnies')
+
+
+
+#Tests
+
+print freq_analysis("abcd")
+#>>> [0.25, 0.25, 0.25, 0.25, 0.0, ..., 0.0]
+
+print freq_analysis("adca")
+#>>> [0.5, 0.0, 0.25, 0.25, 0.0, ..., 0.0]
+
+print freq_analysis('bewarethebunnies')
+#>>> [0.0625, 0.125, 0.0, 0.0, ..., 0.0]
+
+index = []
+        
+def add_to_index(index,keyword,url):
+    for entry in index:
+        if entry[0] == keyword:
+            entry[1].append(url)
+            return
+    index.append([keyword, [url]])
+    return index
+
+add_to_index(index,'udacity','http://udacity.com')
+add_to_index(index,'computing','http://acm.org')
+add_to_index(index,'udacity','http://npr.org')
+print index
+# >>> [['udacity', ['http://udacity.com', 'http://npr.org']], 
+# >>> ['computing', ['http://acm.org']]]
+
+
+
+
+
+ 
+
+# Define a procedure, add_page_to_index,
+# that takes three inputs:
+
+#   - index
+#   - url (String)
+#   - content (String)
+
+# It should update the index to include
+# all of the word occurences found in the
+# page content by adding the url to the
+# word's associated url list.
+
+index = []
+
+# adds a keyword and url to index
+def add_to_index(index,keyword,url):
+    for entry in index:
+        if entry[0] == keyword:
+            entry[1].append(url)
+            return
+    index.append([keyword,[url]])
+
+# gets keywords from page (content) and adds to index
+def add_page_to_index(index,url,content): 
+    split_content = content.split()
+    for string in split_content:
+        add_to_index(index,string,url)
+   
+add_page_to_index(index,'fake.text',"This is a test")
+print index
+#>>> [['This', ['fake.text']], ['is', ['fake.text']], ['a', ['fake.text']],
+#>>> ['test',['fake.text']]]
+
+
+
+
+
+
+# 1 Gold Star
+
+# The built-in <string>.split() procedure works
+# okay, but fails to find all the words on a page
+# because it only uses whitespace to split the
+# string. To do better, we should also use punctuation
+# marks to split the page into words.
+
+# Define a procedure, split_string, that takes two
+# inputs: the string to split and a string containing
+# all of the characters considered separators. The
+# procedure should return a list of strings that break
+# the source string up by the characters in the
+# splitlist.
+
+
+def split_string(source,splitlist):
+    output = []
+    atsplit = True
+    for char in source: # itierates through source character by character
+        if char in splitlist:
+            atsplit = True
+        else:
+            if atsplit:
+                output.append(char)
+                atsplit = False
+            else:
+                output[-1] = output[-1] + char
+        print output
+    return output
+
+
+
+
+
+out = split_string("This is a test-of the,string separation-code!"," ,!-")
+print out
+#>>> ['This', 'is', 'a', 'test', 'of', 'the', 'string', 'separation', 'code']
+
+out = split_string("After  the flood   ...  all the colors came out.", " .")
+print out
+#>>> ['After', 'the', 'flood', 'all', 'the', 'colors', 'came', 'out']
+
+#out = split_string("First Name,Last Name,Street Address,City,State,Zip Code",",")
+#print out
+#>>>['First Name', 'Last Name', 'Street Address', 'City', 'State', 'Zip Code']
+
+
+
+
+
+
+
+
+
+
+
+# 2 Gold Stars
+
+# One way search engines rank pages
+# is to count the number of times a
+# searcher clicks on a returned link.
+# This indicates that the person doing
+# the query thought this was a useful
+# link for the query, so it should be
+# higher in the rankings next time.
+
+# (In Unit 6, we will look at a different
+# way of ranking pages that does not depend
+# on user clicks.)
+
+# Modify the index such that for each url in a
+# list for a keyword, there is also a number
+# that counts the number of times a user
+# clicks on that link for this keyword.
+
+# The result of lookup(index,keyword) should
+# now be a list of url entries, where each url
+# entry is a list of a url and a number
+# indicating the number of times that url
+# was clicked for this query keyword.
+
+# You should define a new procedure to simulate
+# user clicks for a given link:
+
+# record_user_click(index,word,url)
+
+# that modifies the entry in the index for
+# the input word by increasing the count associated
+# with the url by 1.
+
+# You also will have to modify add_to_index
+# in order to correctly create the new data
+# structure, and to prevent the repetition of
+# entries as in homework 4-5.
+
+
+def record_user_click(index, keyword, url):
+    urls = lookup(index, keyword)
+    if urls:
+        for entry in urls:
+            if entry[0] == url:
+                entry[1] = entry[1]+1
+
+def add_to_index(index, keyword, url):
+    # format of index: [[keyword, [[url, count], [url, count],..]],...]
+    for entry in index:
+        if entry[0] == keyword:
+            for urls in entry[1]:
+                if urls[0] == url:
+                    return
+            entry[1].append([url,0])
+            return
+    # not found, add new keyword to index
+    index.append([keyword, [[url,0]]])
+
+
+def get_page(url):
+    try:
+        if url == "http://www.udacity.com/cs101x/index.html":
+            return '''<html> <body> This is a test page for learning to crawl!
+<p> It is a good idea to
+<a href="http://www.udacity.com/cs101x/crawling.html">
+learn to crawl</a> before you try to
+<a href="http://www.udacity.com/cs101x/walking.html">walk</a> or
+<a href="http://www.udacity.com/cs101x/flying.html">fly</a>.</p></body></html>'''
+
+        elif url == "http://www.udacity.com/cs101x/crawling.html":
+            return '''<html> <body> I have not learned to crawl yet, but I am
+quite good at  <a href="http://www.udacity.com/cs101x/kicking.html">kicking</a>.
+</body> </html>'''
+
+        elif url == "http://www.udacity.com/cs101x/walking.html":
+            return '''<html> <body> I cant get enough
+<a href="http://www.udacity.com/cs101x/index.html">crawling</a>!</body></html>'''
+
+        elif url == "http://www.udacity.com/cs101x/flying.html":
+            return '<html><body>The magic words are Squeamish Ossifrage!</body></html>'
+    except:
+        return ""
+    return ""
+
+def union(a, b):
+    for e in b:
+        if e not in a:
+            a.append(e)
+
+def get_next_target(page):
+    start_link = page.find('<a href=')
+    if start_link == -1:
+        return None, 0
+    start_quote = page.find('"', start_link)
+    end_quote = page.find('"', start_quote + 1)
+    url = page[start_quote + 1:end_quote]
+    return url, end_quote
+
+def get_all_links(page):
+    links = []
+    while True:
+        url, endpos = get_next_target(page)
+        if url:
+            links.append(url)
+            page = page[endpos:]
+        else:
+            break
+    return links
+
+def crawl_web(seed):
+    tocrawl = [seed]
+    crawled = []
+    index = []
+    while tocrawl:
+        page = tocrawl.pop()
+        if page not in crawled:
+            content = get_page(page)
+            add_page_to_index(index, page, content)
+            union(tocrawl, get_all_links(content))
+            crawled.append(page)
+    return index
+
+def add_page_to_index(index, url, content):
+    words = content.split()
+    for word in words:
+        add_to_index(index, word, url)
+
+def lookup(index, keyword):
+    for entry in index:
+        if entry[0] == keyword:
+            return entry[1]
+    return None
+
+
+#Here is an example showing a sequence of interactions:
+index = crawl_web('http://www.udacity.com/cs101x/index.html')
+print lookup(index, 'good')
+#>>> [['http://www.udacity.com/cs101x/index.html', 0],
+#>>> ['http://www.udacity.com/cs101x/crawling.html', 0]]
+record_user_click(index, 'good', 'http://www.udacity.com/cs101x/crawling.html')
+print lookup(index, 'good')
+#>>> [['http://www.udacity.com/cs101x/index.html', 0],
+#>>> ['http://www.udacity.com/cs101x/crawling.html', 1]]
+
+
+
+
+def hash_string(keyword,buckets):
+    count = 0
+    for char in keyword:
+        count += ord(char)
+    return count%buckets
+     
+print hash_string('a',12)
+#>>> 1
+print hash_string('b',12)
+#>>> 2
+print hash_string('a',13)
+#>>> 6
+print hash_string('au',12)
+#>>> 10
+print hash_string('udacity',12)
+#>>> 11
+
+
+
+
+
+
+
+# Creating an Empty Hash Table
+# Define a procedure, make_hashtable,
+# that takes as input a number, nbuckets,
+# and returns an empty hash table with
+# nbuckets empty buckets.
+
+def make_hashtable(nbuckets):
+    hashtable = []
+    for unused in range(0,nbuckets):
+        hashtable.append([])
+    return hashtable
+    
+print make_hashtable(10)
+
+
+
+
+
+
+# Define a procedure, hashtable_get_bucket,
+# that takes two inputs - a hashtable, and
+# a keyword, and returns the bucket where the
+# keyword could occur.
+
+def hashtable_get_bucket(htable,keyword):
+    return htable[hash_string(keyword, len(htable))]
+
+def hash_string(keyword,buckets):
+    out = 0
+    for s in keyword:
+        out = (out + ord(s)) % buckets
+    return out
+
+def make_hashtable(nbuckets):
+    table = []
+    for unused in range(0,nbuckets):
+        table.append([])
+    return table
+
+table = [[['Francis', 13], ['Ellis', 11]], [], [['Bill', 17], ['Zoe', 14]], [['Coach', 4]], [['Louis', 29], ['Rochelle', 4], ['Nick', 2]]]
+
+print hashtable_get_bucket(table, "Zoe")
+# #>>> [['Bill', 17], ['Zoe', 14]]
+
+print hashtable_get_bucket(table, "Brick")
+# #>>> []
+
+print hashtable_get_bucket(table, "Lilith")
+#>>> [['Louis', 29], ['Rochelle', 4], ['Nick', 2]]
+
+
+
+
+
+
+
+
+
+
+
+
+# Define a procedure,
+#
+#    hashtable_add(htable,key,value)
+#
+# that adds the key to the hashtable (in 
+# the correct bucket), with the correct 
+# value and returns the new hashtable.
+#
+# (Note that the video question and answer
+#  do not return the hashtable, but your code
+#  should do this to pass the test cases.)
+
+def hashtable_add(htable,key,value):
+    hashtable_get_bucket(htable,key).append([key,value])
+    return htable    
+    
+def hashtable_get_bucket(htable,keyword):
+    return htable[hash_string(keyword,len(htable))]
+
+def hash_string(keyword,buckets):
+    out = 0
+    for s in keyword:
+        out = (out + ord(s)) % buckets
+    return out
+
+def make_hashtable(nbuckets):
+    table = []
+    for unused in range(0,nbuckets):
+        table.append([])
+    return table
+
+table = make_hashtable(5)
+
+hashtable_add(table,'Bill', 17)
+hashtable_add(table,'Coach', 4)
+hashtable_add(table,'Ellis', 11)
+hashtable_add(table,'Francis', 13)
+hashtable_add(table,'Louis', 29)
+hashtable_add(table,'Nick', 2)
+hashtable_add(table,'Rochelle', 4)
+hashtable_add(table,'Zoe', 14)
+print table
+#>>> [[['Ellis', 11], ['Francis', 13]], [], [['Bill', 17], ['Zoe', 14]], 
+#>>> [['Coach', 4]], [['Louis', 29], ['Nick', 2], ['Rochelle', 4]]]
+
+
+
+
+
+
+# Define a procedure,
+
+# hashtable_lookup(htable,key)
+
+# that takes two inputs, a hashtable
+# and a key (string),
+# and returns the value associated
+# with that key.
+
+def hashtable_lookup(htable,key):
+    for entry in hashtable_get_bucket(htable,key):
+        if entry[0] == key:
+            return entry[1]
+    return None
+
+def hashtable_add(htable,key,value):
+    bucket = hashtable_get_bucket(htable,key)
+    bucket.append([key,value])
+
+def hashtable_get_bucket(htable,keyword):
+    return htable[hash_string(keyword,len(htable))]
+
+def hash_string(keyword,buckets):
+    out = 0
+    for s in keyword:
+        out = (out + ord(s)) % buckets
+    return out
+
+def make_hashtable(nbuckets):
+    table = []
+    for unused in range(0,nbuckets):
+        table.append([])
+    return table
+
+table = [[['Ellis', 11], ['Francis', 13]], [], [['Bill', 17], ['Zoe', 14]],
+[['Coach', 4]], [['Louis', 29], ['Nick', 2], ['Rochelle', 4]]]
+print hashtable_lookup(table, 'Francis')
+#>>> 13
+print hashtable_lookup(table, 'Louis')
+#>>> 29
+#print hashtable_lookup(table, 'Zoe')
+#>>> 14
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Define a procedure,
+
+# hashtable_update(htable,key,value)
+
+# that updates the value associated with key. If key is already in the
+# table, change the value to the new value. Otherwise, add a new entry
+# for the key and value.
+
+# Hint: Use hashtable_lookup as a starting point.
+# Make sure that you return the new htable
+
+def hashtable_update(htable,key,value):
+    bucket = hashtable_get_bucket(htable,key)
+    for entry in bucket:
+        if entry[0] == key:
+            entry[1] = value
+            return
+    hashtable_add(htable,key,value)
+    return htable
+
+def hashtable_lookup(htable,key):
+    bucket = hashtable_get_bucket(htable,key)
+    for entry in bucket:
+        if entry[0] == key:
+            return entry[1]
+    return None
+
+def hashtable_add(htable,key,value):
+    bucket = hashtable_get_bucket(htable,key)
+    bucket.append([key,value])
+
+
+def hashtable_get_bucket(htable,keyword):
+    return htable[hash_string(keyword,len(htable))]
+
+def hash_string(keyword,buckets):
+    out = 0
+    for s in keyword:
+        out = (out + ord(s)) % buckets
+    return out
+
+def make_hashtable(nbuckets):
+    table = []
+    for unused in range(0,nbuckets):
+        table.append([])
+    return table
+
+
+table = [[['Ellis', 11], ['Francis', 13]], [], [['Bill', 17], ['Zoe', 14]],
+[['Coach', 4]], [['Louis', 29], ['Nick', 2], ['Rochelle', 4]]]
+
+hashtable_update(table, 'Bill', 42)
+hashtable_update(table, 'Rochelle', 94)
+hashtable_update(table, 'Zed', 68)
+print table
+#>>> [[['Ellis', 11], ['Francis', 13]], [['Zed', 68]], [['Bill', 42], 
+#>>> ['Zoe', 14]], [['Coach', 4]], [['Louis', 29], ['Nick', 2], 
+#>>> ['Rochelle', 94]]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Dictionaries of Dictionaries (of Dictionaries)
+
+# The next several questions concern the data structure below for keeping
+# track of Udacity's courses (where all of the values are strings):
+
+#    { <hexamester>, { <class>: { <property>: <value>, ... },
+#                                     ... },
+#      ... }
+
+# For example,
+
+courses = {
+    'feb2012': { 'cs101': {'name': 'Building a Search Engine',
+                           'teacher': 'Dave',
+                           'assistant': 'Peter C.'},
+                 'cs373': {'name': 'Programming a Robotic Car',
+                           'teacher': 'Sebastian',
+                           'assistant': 'Andy'}},
+    'apr2012': { 'cs101': {'name': 'Building a Search Engine',
+                           'teacher': 'Dave',
+                           'assistant': 'Sarah'},
+                 'cs212': {'name': 'The Design of Computer Programs',
+                           'teacher': 'Peter N.',
+                           'assistant': 'Andy',
+                           'prereq': 'cs101'},
+                 'cs253': 
+                {'name': 'Web Application Engineering - Building a Blog',
+                           'teacher': 'Steve',
+                           'prereq': 'cs101'},
+                 'cs262': 
+                {'name': 'Programming Languages - Building a Web Browser',
+                           'teacher': 'Wes',
+                           'assistant': 'Peter C.',
+                           'prereq': 'cs101'},
+                 'cs373': {'name': 'Programming a Robotic Car',
+                           'teacher': 'Sebastian'},
+                 'cs387': {'name': 'Applied Cryptography',
+                           'teacher': 'Dave'}},
+    'jan2044': { 'cs001': {'name': 'Building a Quantum Holodeck',
+                           'teacher': 'Dorina'},
+               'cs003': {'name': 'Programming a Robotic Robotics Teacher',
+                           'teacher': 'Jasper'},
+                     }
+    }
+
+
+def courses_offered(courses, hexamester):
+    res = []
+    for c in courses[hexamester]:
+        res.append(c)
+    return res
+
+def involved_mk1(courses, person):
+    temp = []
+    results = {}
+    # goes to each hexamester
+    for hexamester in courses:
+        offered = courses_offered(courses, hexamester)
+        # lookup values assosciated with each course in that hexamester
+        for course in offered:
+            for values in courses[hexamester][course]:
+                # tests person we're searching for
+                if courses[hexamester][course][values] == person:
+                    temp.append(course)
+                    print temp
+                    break
+        if temp:
+            results[hexamester] = temp
+        temp = []
+    return results
+    
+def involved(courses, person): # this code is a bit better
+    output = {}
+    for hexamester in courses:
+        for course in courses[hexamester]:
+            for key in courses[hexamester][course]:
+                if courses[hexamester][course][key] == person:
+                    if hexamester in output:
+                        output[hexamester].append(course)
+                    else:
+                        output[hexamester] = [course]
+    return output
+    
+
+# [Double Gold Star] Define a procedure, involved(courses, person), that takes 
+# as input a courses structure and a person and returns a Dictionary that 
+# describes all the courses the person is involved in.  A person is involved 
+# in a course if they are a value for any property for the course.  The output 
+# Dictionary should have hexamesters as its keys, and each value should be a 
+# list of courses that are offered that hexamester (the courses in the list 
+# can be in any order).
+
+
+
+
+
+
+# For example:
+
+print involved(courses, 'Dave')
+#>>> {'apr2012': ['cs101', 'cs387'], 'feb2012': ['cs101']}
+
+#print involved(courses, 'Peter C.')
+#>>> {'apr2012': ['cs262'], 'feb2012': ['cs101']}
+
+#print involved(courses, 'Dorina')
+#>>> {'jan2044': ['cs001']}
+
+#print involved(courses,'Peter')
+#>>> {}
+
+#print involved(courses,'Robotic')
+#>>> {}
+
+#print involved(courses, '')
+#>>> {}
+
+
+
+
+
+
+
+
+
+def hashtable_update(htable, key, value):
+    bucket = hashtable_get_bucket(htable, key)
+    entry = bucket_find(bucket, key)
+    if entry:
+        entry[1] = value
+    else:
+        bucket.append([key, value])  
+    
+def bucket_find(bucket, key):
+    for entry in bucket:
+        if entry[0] == key:
+            return entry
+    return None
+
+def hashtable_lookup(htable, key):
+    entry = bucket_find(hashtable_get_bucket(htable, key), key)
+    return entry[1]
+    
+
+def make_hashtable(size):
+    table = []
+    for unused in range(0, size):
+        table.append([])
+    return table
+
+def hash_string(s, size):
+    h = 0
+    for c in s:
+         h = h + ord(c)
+    return h % size
+
+def hashtable_get_bucket(htable, key):
+    return htable[hash_string(key, len(htable))]
+    
+table = make_hashtable(10)
+hashtable_update(table, 'Python', 'Monty')
+hashtable_update(table, 'CLU', 'Barbara Liskov')
+hashtable_update(table, 'JavaScript', 'Brendan Eich')
+hashtable_update(table, 'Python', 'Guido van Rossum')
+print hashtable_lookup(table, 'Python')
+
+
+
+
+
+######
+below builds a cache that handles multiple procedures, only needed
+one procedure though! simpler code below this blow
+######
+
+def cached_execution(cache, proc, proc_input):
+    # turn our procedure into a string for easier use
+    if proc.__name__ in cache:
+    
+        if proc_input in cache[proc.__name__]:
+            # already calculated, so we return the calcuation
+            return cache[proc.__name__][proc_input]
+            
+        else:
+            # hasn't been calculated. Run procedure and add results to cache
+            add_to_proc(cache, proc, proc_input)
+            
+    else:
+        # proc hasn't been seen before, create an entry for it
+        add_to_cache(cache,proc)
+        # now run calculation and add result to cache
+        add_to_proc(cache, proc, proc_input)
+        return cached_execution(cache, proc, proc_input)  
+      
+def add_to_cache(cache, proc):
+    # adds a procedure to the cache if it hasn't been seen before
+    cache[proc.__name__] = {}   
+    
+def add_to_proc(cache, proc, proc_input):
+    # adds proc_input and its result to cache if input hasn't been seen before
+    result = proc(proc_input)
+    cache[proc.__name__][proc_input] = result
+
+def factorial(n):
+    print "Running factorial"
+    result = 1
+    for i in range(2, n + 1):
+        result = result * i
+    return result
+    
+cache = {} # start cache as an empty dictionary
+### first execution (should print out Running factorial and the result)
+cached_execution(cache, factorial, 50)
+cached_execution(cache, factorial, 51)
+cached_execution(cache, factorial, 52)
+cached_execution(cache, factorial, 53)
+cached_execution(cache, factorial, 54)
+cached_execution(cache, factorial, 55)
+cached_execution(cache, factorial, 56)
+cached_execution(cache, factorial, 57)
+cached_execution(cache, factorial, 58)
+print cache
+
+
+#####
+better code and question below
+#####
+
+# [Double Gold Star] Memoization is a way to make code run faster by saving
+# previously computed results.  Instead of needing to recompute the value of an
+# expression, a memoized computation first looks for the value in a cache of
+# pre-computed values.
+
+# Define a procedure, cached_execution(cache, proc, proc_input), that takes in
+# three inputs: a cache, which is a Dictionary that maps inputs to proc to
+# their previously computed values, a procedure, proc, which can be called by
+# just writing proc(proc_input), and proc_input which is the input to proc.
+# Your procedure should return the value of the proc with input proc_input,
+# but should only evaluate it if it has not been previously called.
+
+def cached_execution(cache, proc, proc_input):
+    if proc_input in cache:
+        return cache[proc_input]
+    
+    result = proc(proc_input)
+    cache[proc_input] = result
+    return result
+
+def factorial(n):
+    print "Running factorial"
+    result = 1
+    for i in range(2, n + 1):
+        result = result * i
+    return result
+    
+def cached_fibo(n):
+    if n == 1 or n == 0:
+        return n
+    else:
+        return (cached_execution(cache, cached_fibo, n - 1 )
+               + cached_execution(cache,  cached_fibo, n - 2 ))
+               
+cache = {} # new cache for this procedure
+# do not try this at home...at least without a cache!
+print cached_execution(cache, cached_fibo,100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Write a procedure, rotate which takes as its input a string of lower case
+# letters, a-z, and spaces, and an integer n, and returns the string constructed
+# by shifting each of the letters n steps, and leaving the spaces unchanged.
+# Note that 'a' follows 'z'. You can use an additional procedure if you
+# choose to as long as rotate returns the correct string.
+# Note that n can be positive, negative or zero.
+
+def rotate(string, n):
+    result = ""
+    count = 0
+    for e in string:
+        if ord(e) >= 97 and ord(e) <= 122:
+            # selects lowercase letters a-z
+            count = ord(e) + n
+            if count > 122:
+                # wrap around to start of alphabet
+                count = count - 122 + 96
+                result = result + chr(count)
+                continue
+            if count < 97:
+                # wrap around to end of alphabet
+                count = 123 - (97 - count)
+                result = result + chr(count)
+                continue
+            # if the number doesn't wrap
+            result = result + chr(ord(e) + n)
+        else:
+            # if we have a space or punctuation
+            result = result + e
+    return result
+    
+    
+    
+print rotate ('sarah', 13)
+# #>>> 'fnenu'
+print rotate('fnenu',13)
+# #>>> 'sarah'
+print rotate('dave',5)
+# #>>>'ifaj'
+print rotate('ifaj',-5)
+#>>>'dave'
+print rotate(("zw pfli tfuv nfibj tfiivtkcp pfl jyflcu "
+                "sv rscv kf ivru kyzj"),-17)
+#>>> ???
+
+
+
+
+
+
+
+
+
+
+
+# Define a procedure is_palindrome, that takes as input a string, and returns a
+# Boolean indicating if the input string is a palindrome.
+
+# Base Case: '' => True
+# Recursive Case: if first and last characters don't match => False
+# if they do match, is the middle a palindrome?
+
+def is_palindrome(s):
+    if s == '':
+        return True    
+    else: 
+        if s[0] == s[-1]:
+            return is_palindrome(s[1:-1])
+        else:
+            return False
+
+#>>> False
+print is_palindrome('abcba')
+#>>> True
+
+
+
+
+
+
+
+
+# Define a procedure, fibonacci, that takes a natural number as its input, and
+# returns the value of that fibonacci number.
+
+# Two Base Cases:
+#    fibonacci(0) => 0
+#    fibonacci(1) => 1
+
+# Recursive Case:
+#    n > 1 : fibonacci(n) => fibonacci(n-1) + fibonacci(n-2)
+
+def fibonacci(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+
+print fibonacci(0)
+#>>> 0
+print fibonacci(1)
+#>>> 1
+print fibonacci(15)
+#>>> 610
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Spreading Udaciousness
+ 
+# One of our modest goals is to teach everyone in the world to program and
+# understand computer science. To estimate how long this will take we have
+# developed a (very flawed!) model:
+
+# Everyone answering this question will convince a number, spread, (input to 
+# the model) of their friends to take the course next offering. This will 
+# continue, so that all of the newly recruited students, as well as the original
+# students, will convince spread of their
+# friends to take the following offering of the course.
+# recruited friends are unique, so there is no duplication among the newly
+# recruited students. Define a procedure, hexes_to_udaciousness(n, spread,
+# target), that takes three inputs: the starting number of Udacians, the spread
+# rate (how many new friends each Udacian convinces to join each hexamester),
+# and the target number, and outputs the number of hexamesters needed to reach 
+# (or exceed) the target.
+
+# For credit, your procedure must not use: while, for, or import math. 
+counter = [-1]
+def hexes_to_udaciousness(n, spread, target):
+    counter[0] += 1
+    if n < target:
+        return hexes_to_udaciousness((n + n * spread), spread, target)
+    else:
+        result = [0]
+        result[0],counter[0] = counter[0], -1
+        return result[0]
+        
+#####  --- beautiful way below
+def hexes_to_udaciousness(n, spread, target):
+    if n >= target:
+        return 0
+    else:
+        return 1 + hexes_to_udaciousness((n + n * spread), spread, target)
+#####        
+        
+
+
+# 0 more needed, since n already exceeds target
+#print hexes_to_udaciousness(100000, 2, 36230) 
+#>>> 0
+
+# after 1 hexamester, there will be 50000 + (50000 * 2) Udacians
+#print hexes_to_udaciousness(50000, 2, 150000) 
+#>>> 1 
+
+# need to match or exceed the target
+#print hexes_to_udaciousness(50000, 2, 150001)
+#>>> 2 
+
+# only 12 hexamesters (2 years) to world domination!
+print hexes_to_udaciousness(20000, 2, 7 * 10 ** 9) 
+#>>> 12 
+
+# more friends means faster world domination!
+#print hexes_to_udaciousness(15000, 3, 7 * 10 ** 9)
+#>>> 10 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Deep Count 
+
+# The built-in len operator outputs the number of top-level elements in a List,
+# but not the total number of elements. For this question, your goal is to count
+# the total number of elements in a list, including all of the inner lists.
+
+# Define a procedure, deep_count, that takes as input a list, and outputs the
+# total number of elements in the list, including all elements in lists that it
+# contains.
+
+
+# For this procedure, you will need a way to test if a value is a list. We have
+# provided a procedure, is_list(p) that does this:
+
+def is_list(p):
+    return isinstance(p, list)
+
+# It is not necessary to understand how is_list works. It returns True if the
+# input is a List, and returns False otherwise.
+
+
+def deep_count(p):
+    sum = 0
+    for element in p:
+        sum = sum + 1
+        if is_list(element):
+            sum = sum + deep_count(element)
+    return sum
+
+print deep_count([1, 2, 3])
+#>>> 3
+
+# The empty list still counts as an element of the outer list
+#print deep_count([1, [], 3]) 
+#>>> 3 
+
+print deep_count([1, [1, 2, [3, 4]]])
+#>>> 7
+
+print deep_count([[[[[[[[1, 2, 3]]]]]]]])
+#>>> 10
+
+
+
+
+
+
+
+
+
+
+#Feeling Lucky
+ 
+#In Unit 6, we implemented a page ranking algorithm, but didn't finish the final
+#step of using it to improve our search results. For this question, you will use
+#the page rankings to produce the best output for a given query.
+
+#Define a procedure, lucky_search, that takes as input an index, a ranks
+#dictionary (the result of compute_ranks), and a keyword, and returns the one
+#URL most likely to be the best site for that keyword. If the keyword does not
+#appear in the index, lucky_search should return None.
+
+# def lucky_search(index, ranks, keyword):
+    
+            
+
+cache = {
+   'http://udacity.com/cs101x/urank/index.html': """<html>
+<body>
+<h1>Dave's Cooking Algorithms</h1>
+<p>
+Here are my favorite recipies:
+<ul>
+<li> <a href="http://udacity.com/cs101x/urank/hummus.html">Hummus Recipe</a>
+<li> <a href="http://udacity.com/cs101x/urank/arsenic.html">World's Best Hummus</a>
+<li> <a href="http://udacity.com/cs101x/urank/kathleen.html">Kathleen's Hummus Recipe</a>
+</ul>
+
+For more expert opinions, check out the 
+<a href="http://udacity.com/cs101x/urank/nickel.html">Nickel Chef</a> 
+and <a href="http://udacity.com/cs101x/urank/zinc.html">Zinc Chef</a>.
+</body>
+</html>
+
+
+
+
+
+
+""",
+   'http://udacity.com/cs101x/urank/zinc.html': """<html>
+<body>
+<h1>The Zinc Chef</h1>
+<p>
+I learned everything I know from 
+<a href="http://udacity.com/cs101x/urank/nickel.html">the Nickel Chef</a>.
+</p>
+<p>
+For great hummus, try 
+<a href="http://udacity.com/cs101x/urank/arsenic.html">this recipe</a>.
+
+</body>
+</html>
+
+
+
+
+
+
+""",
+   'http://udacity.com/cs101x/urank/nickel.html': """<html>
+<body>
+<h1>The Nickel Chef</h1>
+<p>
+This is the
+<a href="http://udacity.com/cs101x/urank/kathleen.html">
+best Hummus recipe!
+</a>
+
+</body>
+</html>
+
+
+
+
+
+
+""",
+   'http://udacity.com/cs101x/urank/kathleen.html': """<html>
+<body>
+<h1>
+Kathleen's Hummus Recipe
+</h1>
+<p>
+
+<ol>
+<li> Open a can of garbonzo beans.
+<li> Crush them in a blender.
+<li> Add 3 tablesppons of tahini sauce.
+<li> Squeeze in one lemon.
+<li> Add salt, pepper, and buttercream frosting to taste.
+</ol>
+
+</body>
+</html>
+
+""",
+   'http://udacity.com/cs101x/urank/arsenic.html': """<html>
+<body>
+<h1>
+The Arsenic Chef's World Famous Hummus Recipe
+</h1>
+<p>
+
+<ol>
+<li> Kidnap the <a href="http://udacity.com/cs101x/urank/nickel.html">Nickel Chef</a>.
+<li> Force her to make hummus for you.
+</ol>
+
+</body>
+</html>
+
+""",
+   'http://udacity.com/cs101x/urank/hummus.html': """<html>
+<body>
+<h1>
+Hummus Recipe
+</h1>
+<p>
+
+<ol>
+<li> Go to the store and buy a container of hummus.
+<li> Open it.
+</ol>
+
+</body>
+</html>
+
+
+
+
+""",
+}
+
+def lucky_search(index, ranks, keyword):
+    lookup_result = lookup(index, keyword) # gets a list of all urls with that keyword  
+    if lookup_result == None:
+        return None
+    # LOOKUP
+    # ['http://udacity.com/cs101x/urank/index.html', 'http://udacity.com/cs101x/urank/nickel.html', 'http://udacity.com/cs101x/urank/kathleen.html', 'http://udacity.com/cs101x/urank/arsenic.html', 
+    #  'http://udacity.com/cs101x/urank/hummus.html']
+    # RANKS
+    # {'http://udacity.com/cs101x/urank/kathleen.html': 0.11661866666666663, 'http://udacity.com/cs101x/urank/zinc.html': 0.038666666666666655, 'http://udacity.com/cs101x/urank/hummus.html': 0.038666666666666655, 
+    #  'http://udacity.com/cs101x/urank/arsenic.html': 0.054133333333333325, 'http://udacity.com/cs101x/urank/index.html': 0.033333333333333326, 'http://udacity.com/cs101x/urank/nickel.html': 0.09743999999999997}
+    lucky_list = [] # stores relevant URLs and their rank
+    for url in lookup_result:
+        lucky_list.append([url, ranks[url]])
+    highest_rank = lucky_list[0] # something to compare against
+    for entry in lucky_list: # compares ranks and finds highest
+        if entry[1] > highest_rank[1]:
+            highest_rank = entry #updates with new highest ranking url
+    return highest_rank[0]
+    
+
+def get_page(url):
+    if url in cache:
+        return cache[url]
+    return ""
+
+
+def get_next_target(page):
+    start_link = page.find('<a href=')
+    if start_link == -1: 
+        return None, 0
+    start_quote = page.find('"', start_link)
+    end_quote = page.find('"', start_quote + 1)
+    url = page[start_quote + 1:end_quote]
+    return url, end_quote
+
+def get_all_links(page):
+    links = []
+    while True:
+        url, endpos = get_next_target(page)
+        if url:
+            links.append(url)
+            page = page[endpos:]
+        else:
+            break
+    return links
+
+
+def union(a, b):
+    for e in b:
+        if e not in a:
+            a.append(e)
+
+def add_page_to_index(index, url, content):
+    words = content.split()
+    for word in words:
+        add_to_index(index, word, url)
+        
+def add_to_index(index, keyword, url):
+    if keyword in index:
+        index[keyword].append(url)
+    else:
+        index[keyword] = [url]
+    
+def lookup(index, keyword):
+    if keyword in index:
+        return index[keyword]
+    else:
+        return None
+
+def crawl_web(seed): # returns index, graph of inlinks
+    tocrawl = [seed]
+    crawled = []
+    graph = {}  # <url>, [list of pages it links to]
+    index = {} 
+    while tocrawl: 
+        page = tocrawl.pop()
+        if page not in crawled:
+            content = get_page(page)
+            add_page_to_index(index, page, content)
+            outlinks = get_all_links(content)
+            graph[page] = outlinks
+            union(tocrawl, outlinks)
+            crawled.append(page)
+    return index, graph
+
+def compute_ranks(graph):
+    d = 0.8 # damping factor
+    numloops = 10
+    
+    ranks = {}
+    npages = len(graph)
+    for page in graph:
+        ranks[page] = 1.0 / npages
+    
+    for i in range(0, numloops):
+        newranks = {}
+        for page in graph:
+            newrank = (1 - d) / npages
+            for node in graph:
+                if page in graph[node]:
+                    newrank = newrank + d * (ranks[node] / len(graph[node]))
+            newranks[page] = newrank
+        ranks = newranks
+    return ranks
+
+
+#Here's an example of how your procedure should work on the test site: 
+
+index, graph = crawl_web('http://udacity.com/cs101x/urank/index.html')
+ranks = compute_ranks(graph)
+
+
+
+print lucky_search(index, ranks, 'Hummus')
+#>>> http://udacity.com/cs101x/urank/kathleen.html
+
+print lucky_search(index, ranks, 'the')
+#>>> http://udacity.com/cs101x/urank/nickel.html
+
+print lucky_search(index, ranks, 'babaganoush')
+#>>> None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ # Single Gold Star
+
+# Family Trees
+
+# In the lecture, we showed a recursive definition for your ancestors. For this
+# question, your goal is to define a procedure that finds someone's ancestors,
+# given a Dictionary that provides the parent relationships.
+
+# Here's an example of an input Dictionary:
+
+ada_family = { 'Judith Blunt-Lytton': ['Anne Isabella Blunt', 'Wilfrid Scawen Blunt'],
+              'Ada King-Milbanke': ['Ralph King-Milbanke', 'Fanny Heriot'],
+              'Ralph King-Milbanke': ['Augusta Ada King', 'William King-Noel'],
+              'Anne Isabella Blunt': ['Augusta Ada King', 'William King-Noel'],
+              'Byron King-Noel': ['Augusta Ada King', 'William King-Noel'],
+              'Augusta Ada King': ['Anne Isabella Milbanke', 'George Gordon Byron'],
+              'George Gordon Byron': ['Catherine Gordon', 'Captain John Byron'],
+              'John Byron': ['Vice-Admiral John Byron', 'Sophia Trevannion'] }
+
+# Define a procedure, ancestors(genealogy, person), that takes as its first input
+# a Dictionary in the form given above, and as its second input the name of a
+# person. It should return a list giving all the known ancestors of the input
+# person (this should be the empty list if there are none). The order of the list
+# does not matter and duplicates will be ignored.
+
+def ancestors(genealogy, person):
+    if person in genealogy:   
+        parents = genealogy[person]
+        results = parents
+        for parent in parents:
+            results = results + ancestors(genealogy, parent)
+        return results
+    return []
+
+
+
+
+
+
+# Here are some examples:
+
+print ancestors(ada_family, 'Augusta Ada King')
+#>>> ['Anne Isabella Milbanke', 'George Gordon Byron',
+#    'Catherine Gordon','Captain John Byron']
+
+print ancestors(ada_family, 'Judith Blunt-Lytton')
+#>>> ['Anne Isabella Blunt', 'Wilfrid Scawen Blunt', 'Augusta Ada King',
+#    'William King-Noel', 'Anne Isabella Milbanke', 'George Gordon Byron',
+#    'Catherine Gordon', 'Captain John Byron']
+
+#print ancestors(ada_family, 'Dave')
+#>>> []
+
+
+
+
+
+
+
+
+
+
+
+# Double Gold Star
+
+# Khayyam Triangle
+
+# The French mathematician, Blaise Pascal, who built a mechanical computer in
+# the 17th century, studied a pattern of numbers now commonly known in parts of
+# the world as Pascal's Triangle (it was also previously studied by many Indian,
+# Chinese, and Persian mathematicians, and is known by different names in other
+# parts of the world).
+
+# The pattern is shown below:
+
+#                    1
+#                   1 1
+#                  1 2 1
+#                 1 3 3 1
+#                1 4 6 4 1
+#                   ...
+
+# Each number is the sum of the number above it to the left and the number above
+# it to the right (any missing numbers are counted as 0).
+
+# Define a procedure, triangle(n), that takes a number n as its input, and
+# returns a list of the first n rows in the triangle. Each element of the
+# returned list should be a list of the numbers at the corresponding row in the
+# triangle.
+
+
+def triangle(n):
+    pascal = []
+    for i in range(0,n+1):
+        if i == 0:
+            continue
+        if i == 1:
+            pascal.append([1])
+        else:
+            pascal.append([1])
+            print -len(pascal[-2])
+            for y in range(-len(pascal[-2]), -1):
+                pascal[-1].append(pascal[-2][y] + pascal[-2][y+1])            
+            pascal[-1].append(1)
+    return pascal
+    
+    
+    
+
+    ##### Recursive below
+    
+def make_next_row(row):
+    result = []
+    prev = 0
+    for e in row:
+        result.append(e + prev)
+        prev = e 
+        print e 
+    result.append(prev)
+    return result
+    
+def triangle(n):
+    result = []
+    current = [1]
+    for unused in range(0, n):
+        result.append(current)
+        print current
+        current = make_next_row(current)
+    
+    return result
+    
+    #####
+  
+#For example:
+
+#print triangle(0)
+#>>> []
+
+#print triangle(1)
+#>>> [[1]]
+
+#print triangle(2)
+#>> [[1], [1, 1]]
+
+#print triangle(3)
+#>>> [[1], [1, 1], [1, 2, 1]]
+
+print triangle(6)
+#>>> [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1], [1, 5, 10, 10, 5, 1]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# RECURSIVE QUICK SEARCH
+
+# Triple Gold Star
+
+# Only A Little Lucky
+
+# The Feeling Lucky question (from the regular homework) assumed it was enough
+# to find the best-ranked page for a given query. For most queries, though, we
+# don't just want the best page (according to the page ranking algorithm), we
+# want a list of many pages that match the query, ordered from the most likely
+# to be useful to the least likely.
+
+# Your goal for this question is to define a procedure, ordered_search(index,
+# ranks, keyword), that takes the same inputs as lucky_search from Question 5,
+# but returns an ordered list of all the URLs that match the query.
+
+# To order the pages, use the quicksort algorithm, invented by Sir Tony Hoare in
+# 1959. Quicksort provides a way to sort any list of data, using an expected
+# number of comparisons that scales as n log n where n is the number of elements
+# in the list.
+
+# The idea of quicksort is quite simple:
+
+# If the list has zero or one elements, it is already sorted.
+
+# Otherwise, pick a pivot element, and split the list into two partitions: one
+# contains all the elements equal to or lower than the value of the pivot
+# element, and the other contains all the elements that are greater than the
+# pivot element. Recursively sort each of the sub-lists, and then return the
+# result of concatenating the sorted left sub-list, the pivot element, and the
+# sorted right sub-list.
+
+# For simplicity, use the first element in the list as your pivot element (this
+# is not usually a good choice, since it means if the input list is already
+# nearly sorted, the actual work will be much worse than expected).
+
+
+
+
+
+cache = {
+   'http://udacity.com/cs101x/urank/index.html': """<html>
+<body>
+<h1>Dave's Cooking Algorithms</h1>
+<p>
+Here are my favorite recipies:
+<ul>
+<li> <a href="http://udacity.com/cs101x/urank/hummus.html">Hummus Recipe</a>
+<li> <a href="http://udacity.com/cs101x/urank/arsenic.html">World's Best Hummus</a>
+<li> <a href="http://udacity.com/cs101x/urank/kathleen.html">Kathleen's Hummus Recipe</a>
+</ul>
+
+For more expert opinions, check out the
+<a href="http://udacity.com/cs101x/urank/nickel.html">Nickel Chef</a>
+and <a href="http://udacity.com/cs101x/urank/zinc.html">Zinc Chef</a>.
+</body>
+</html>
+
+
+
+
+
+
+""",
+   'http://udacity.com/cs101x/urank/zinc.html': """<html>
+<body>
+<h1>The Zinc Chef</h1>
+<p>
+I learned everything I know from
+<a href="http://udacity.com/cs101x/urank/nickel.html">the Nickel Chef</a>.
+</p>
+<p>
+For great hummus, try
+<a href="http://udacity.com/cs101x/urank/arsenic.html">this recipe</a>.
+
+</body>
+</html>
+
+
+
+
+
+
+""",
+   'http://udacity.com/cs101x/urank/nickel.html': """<html>
+<body>
+<h1>The Nickel Chef</h1>
+<p>
+This is the
+<a href="http://udacity.com/cs101x/urank/kathleen.html">
+best Hummus recipe!
+</a>
+
+</body>
+</html>
+
+
+
+
+
+
+""",
+   'http://udacity.com/cs101x/urank/kathleen.html': """<html>
+<body>
+<h1>
+Kathleen's Hummus Recipe
+</h1>
+<p>
+
+<ol>
+<li> Open a can of garbonzo beans.
+<li> Crush them in a blender.
+<li> Add 3 tablesppons of tahini sauce.
+<li> Squeeze in one lemon.
+<li> Add salt, pepper, and buttercream frosting to taste.
+</ol>
+
+</body>
+</html>
+
+""",
+   'http://udacity.com/cs101x/urank/arsenic.html': """<html>
+<body>
+<h1>
+The Arsenic Chef's World Famous Hummus Recipe
+</h1>
+<p>
+
+<ol>
+<li> Kidnap the <a href="http://udacity.com/cs101x/urank/nickel.html">Nickel Chef</a>.
+<li> Force her to make hummus for you.
+</ol>
+
+</body>
+</html>
+
+""",
+   'http://udacity.com/cs101x/urank/hummus.html': """<html>
+<body>
+<h1>
+Hummus Recipe
+</h1>
+<p>
+
+<ol>
+<li> Go to the store and buy a container of hummus.
+<li> Open it.
+</ol>
+
+</body>
+</html>
+
+
+
+
+""",
+}
+
+def get_page(url):
+    if url in cache:
+        return cache[url]
+    return ""
+
+
+def get_next_target(page):
+    start_link = page.find('<a href=')
+    if start_link == -1:
+        return None, 0
+    start_quote = page.find('"', start_link)
+    end_quote = page.find('"', start_quote + 1)
+    url = page[start_quote + 1:end_quote]
+    return url, end_quote
+
+def get_all_links(page):
+    links = []
+    while True:
+        url, endpos = get_next_target(page)
+        if url:
+            links.append(url)
+            page = page[endpos:]
+        else:
+            break
+    return links
+
+
+def union(a, b):
+    for e in b:
+        if e not in a:
+            a.append(e)
+
+def add_page_to_index(index, url, content):
+    words = content.split()
+    for word in words:
+        add_to_index(index, word, url)
+
+def add_to_index(index, keyword, url):
+    if keyword in index:
+        index[keyword].append(url)
+    else:
+        index[keyword] = [url]
+
+def lookup(index, keyword):
+    if keyword in index:
+        return index[keyword]
+    else:
+        return None
+
+def crawl_web(seed): # returns index, graph of inlinks
+    tocrawl = [seed]
+    crawled = []
+    graph = {}  # <url>, [list of pages it links to]
+    index = {}
+    while tocrawl:
+        page = tocrawl.pop()
+        if page not in crawled:
+            content = get_page(page)
+            add_page_to_index(index, page, content)
+            outlinks = get_all_links(content)
+            graph[page] = outlinks
+            union(tocrawl, outlinks)
+            crawled.append(page)
+    return index, graph
+
+def compute_ranks(graph):
+    d = 0.8 # damping factor
+    numloops = 10
+
+    ranks = {}
+    npages = len(graph)
+    for page in graph:
+        ranks[page] = 1.0 / npages
+
+    for i in range(0, numloops):
+        newranks = {}
+        for page in graph:
+            newrank = (1 - d) / npages
+            for node in graph:
+                if page in graph[node]:
+                    newrank = newrank + d * (ranks[node] / len(graph[node]))
+            newranks[page] = newrank
+        ranks = newranks
+    return ranks
+    
+    
+     
+    
+def ordered_search(index, ranks, keyword):
+    lookup_result = lookup(index, keyword) # gets a list of all urls with that keyword  
+    if lookup_result == None:
+        return None
+
+    lucky_list = [] # stores relevant URLs and their rank
+    for url in lookup_result:
+        lucky_list.append([url, ranks[url]])
+    sorted_list = quick_sort(lucky_list) #list of urls:ranking sorted  by ranking
+    
+    results = []
+    i = len(sorted_list)
+    while i > 0:
+        results.append(sorted_list[i-1][0])
+        i = i - 1
+    return results
+    
+def quick_sort(list): # returns a list of [url:ranking] sorted by ranking
+    less = []
+    more = []
+    if len(list) <= 1:
+        return list
+    for entry in list[:-1]:
+        if entry[1] <= list[-1][1]: # sort to less than 
+            less.append(entry)
+        if entry[1] > list[-1][1]: # sort to less than 
+            more.append(entry)
+    return quick_sort(less) + list[-1:] + quick_sort(more)
+        
+
+
+
+# Here are some example showing what ordered_search should do:
+
+# Observe that the result list is sorted so the highest-ranking site is at the
+# beginning of the list.
+
+# Note: the intent of this question is for students to write their own sorting
+# code, not to use the built-in sort procedure.
+
+index, graph = crawl_web('http://udacity.com/cs101x/urank/index.html')
+
+ranks = compute_ranks(graph)
+
+print ordered_search(index, ranks, 'Hummus')
+#>>> ['http://udacity.com/cs101x/urank/kathleen.html',
+#    'http://udacity.com/cs101x/urank/nickel.html',
+#    'http://udacity.com/cs101x/urank/arsenic.html',
+#    'http://udacity.com/cs101x/urank/hummus.html',
+#    'http://udacity.com/cs101x/urank/index.html']
+
+#print ordered_search(index, ranks, 'the')
+#>>> ['http://udacity.com/cs101x/urank/nickel.html',
+#    'http://udacity.com/cs101x/urank/arsenic.html',
+#    'http://udacity.com/cs101x/urank/hummus.html',
+#    'http://udacity.com/cs101x/urank/index.html']
+
+
+#print ordered_search(index, ranks, 'babaganoush')
+#>>> None
+
